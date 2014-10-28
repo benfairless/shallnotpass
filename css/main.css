@@ -1,0 +1,47 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  background: #f0f0f0;
+}
+#hash {
+  background: #dbfcff;
+  cursor: auto;
+}
+h2 {
+  text-shadow: 0 1px 0px #ffffff;
+}
+.octicon-override{
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-shadow: 0 1px 0px #ffffff;
+}
+.octicon-override2{
+  font-size: 32px;
+  width: 32px;
+  text-align: center;
+  text-shadow: 0 1px 0px #ffffff;
+}
+.jscheck {
+  position: absolute;
+  top: 0px;
+  padding: 20px;
+  width: 100%;
+  font-size: 16px;
+  background: #000000;
+  color: #ffffff;
+}
+footer {
+  position: absolute;
+  bottom: 0px;
+  margin: 20px;
+}
+footer a {
+  color: inherit;
+}
