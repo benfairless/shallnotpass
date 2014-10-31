@@ -1,5 +1,3 @@
-
-
 // jQuery page load actions
 $( document ).ready( function() {
 
@@ -19,14 +17,14 @@ $( document ).ready( function() {
   function genHash() {
     var acct = $( 'input#acct').val();
     var pass = $( 'input#pass').val();
-    if ( acct == "" || pass == "") {
+    if ( acct === "" || pass === "") {
       highlightError();
     }
     else {
-      $( '#hashgroup').fadeIn( 750 );
-      $( '#hash').val( shallNotPass.generate( acct, pass ) );
-      $( '#hash').focus();
-      $( '#hashgroup').delay(30000).fadeOut( 750, function() { clearFields() } );
+      $( '#hashgroup' ).fadeIn( 750 );
+      $( '#hash' ).val( shallNotPass.create( acct, pass ) );
+      $( '#hash' ).focus();
+      $( '#hashgroup' ).delay(30000).fadeOut( 750, function() { clearFields(); } );
     }
   }
 
@@ -46,12 +44,12 @@ $( document ).ready( function() {
   // Auto-focus ACCT
   $( 'input#acct' ).focus();
   // Auto-select HASH
-  $( 'input#hash').focus( function() { $( this ).select() });
+  $( 'input#hash').focus( function() { $( this ).select(); });
   // If it looks like a button, and it's called a button...
   $( '.btn' ).button();
   // If it looks like a tooltip, and it's called a tooltip...
   $( '.ttp' ).tooltip( { container: 'body' } );
   // Actions for delete button
-  $( '#delete').click( function() { clearFields() });
+  $( '#delete').click( function() { clearFields(); });
 
 });
