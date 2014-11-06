@@ -8,22 +8,24 @@ import os
 
 path = os.path.dirname(os.path.realpath(__file__))
 url = str("file://") + str(path) + str("/index.html")
+title = "shallnotpass - stateless password management"
 
 class Browser:
 
     def __init__(self):
-        self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        self.window.set_default_size(600,400)
-        self.window.set_resizable(True)
+        self.window = gtk.Window( gtk.WINDOW_TOPLEVEL )
+        self.window.set_default_size( 600, 400 )
+        self.window.set_resizable( True )
         self.web_view = webkit.WebView()
-        self.web_view.open(url)
-        scroll_window = gtk.ScrolledWindow(None, None)
-        scroll_window.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
-        scroll_window.set_placement(gtk.CORNER_TOP_LEFT)
-        scroll_window.add(self.web_view)
-        box = gtk.VBox(False, 0)
-        box.add(scroll_window)
-        self.window.add(box)
+        self.web_view.open( url )
+        self.window.set_title( title )
+        scroll_window = gtk.ScrolledWindow( None, None )
+        scroll_window.set_policy( gtk.POLICY_NEVER, gtk.POLICY_NEVER )
+        scroll_window.set_placement( gtk.CORNER_TOP_LEFT )
+        scroll_window.add( self.web_view )
+        box = gtk.VBox( False, 0 )
+        box.add( scroll_window )
+        self.window.add( box )
         self.window.show_all()
 
     def main(self):
