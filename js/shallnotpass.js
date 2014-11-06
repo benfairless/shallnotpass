@@ -34,7 +34,6 @@ var shallNotPass = {
     // Check for numerical characters
     if ( (/[0-9]/.test( string )) === false ) {
       //string = addNumber( string );
-        console.log( "Result modified to contain numberical characters" );
     }
     // Check for special characters
     if ( (/[!,$,%,&,_,-,=,@,#,?]/.test( string )) === false ) {
@@ -53,7 +52,6 @@ var shallNotPass = {
   create : function ( pub, priv ) {
     var result = this.generate( pub, priv );
     result = this.harden( result, priv );
-      console.log( result );
     return result;
   }
 
