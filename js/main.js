@@ -21,7 +21,6 @@ $( document ).ready( function() {
       highlightError();
     }
     else {
-      console.log( acct + pass );
       $( 'div#output-group' ).fadeIn( 750 );
       $( 'input#output' ).val( shallNotPass.create( acct, pass ) );
       $( 'input#output' ).focus();

@@ -109,7 +109,7 @@ var Base64 =
 
         return output.toString();
     }
-}
+};
 
 
 function Utf8EncodeEnumerator(input)
@@ -166,7 +166,7 @@ Utf8EncodeEnumerator.prototype =
             return true;
         }
     }
-}
+};
 
 function Base64DecodeEnumerator(input)
 {

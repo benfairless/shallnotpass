@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=shallnotpass
+Exec=shallnotpass
+Comment=Stateless Password Management
+Icon=shallnotpass.svg
+Terminal=false
+Encoding=UTF-8
