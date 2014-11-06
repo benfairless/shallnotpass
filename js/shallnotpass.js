@@ -27,16 +27,18 @@ var shallNotPass = {
     // Check for upper-case characters
     if ( (/[A-Z]/.test( string )) === false ) {
       string = string.charAt( 0 ).toUpperCase() + string.slice ( 1 );
-      index = 1;
+      index = index + 1;
     }
     // Check for lower-case characters
     if ( (/[a-z]/.test( string )) === false ) {
       string = string.charAt( 0 ).toLowerCase() + string.slice ( 1 );
-      index = 1;
+      index = index + 1;
     }
     // Check for numerical characters
     if ( (/[0-9]/.test( string )) === false ) {
-      //string = addNumber( string );
+      var number = CryptoJS.SHA512( string + priv ).toString().match(/\d/);
+      string = string.substr( 0, index ) + number + string.substr( index + 1);
+      index = index + 1;
     }
     // Check for special characters
     if ( (/[!,$,%,&,_,^,=,@,#,?]/.test( string )) === false ) {
