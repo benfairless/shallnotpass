@@ -7,6 +7,7 @@ recovery without the need for a encrypted password store.
 All password generation is done client-side in your web browser so **your
 information never leaves your machine and is never saved anywhere**.
 
+![Screenshot](img/screenshot.png?raw=true)
 
 ## Raison d'être
 

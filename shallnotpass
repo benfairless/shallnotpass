@@ -17,7 +17,7 @@ class Browser:
 
     def __init__(self):
         self.window = gtk.Window( gtk.WINDOW_TOPLEVEL )
-        self.window.set_default_size( 900, 400 )
+        self.window.set_default_size( 600, 400 )
         self.window.set_resizable( True )
         self.web_view = webkit.WebView()
         self.web_view.open( url )
