@@ -12,9 +12,12 @@ title = "shallnotpass - stateless password management"
 
 class Browser:
 
+    def destroy(self, widget):
+        gtk.main_quit()
+
     def __init__(self):
         self.window = gtk.Window( gtk.WINDOW_TOPLEVEL )
-        self.window.set_default_size( 600, 400 )
+        self.window.set_default_size( 900, 400 )
         self.window.set_resizable( True )
         self.web_view = webkit.WebView()
         self.web_view.open( url )
@@ -27,6 +30,7 @@ class Browser:
         box.add( scroll_window )
         self.window.add( box )
         self.window.show_all()
+        self.window.connect("destroy", self.destroy)
 
     def main(self):
         gtk.main()
@@ -34,7 +38,7 @@ class Browser:
 if __name__ == "__main__":
     try:
         browser = Browser()
-        browser.main()
+        gtk.main()
     except KeyboardInterrupt:
         print >> sys.stderr, '\nExiting by user request.\n'
         sys.exit(0)
