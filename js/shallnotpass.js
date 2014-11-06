@@ -21,34 +21,37 @@ var shallNotPass = {
     return result;
   },
 
-
+  // Ensure that passwords are 'hard'
   harden : function ( string, priv ) {
-    // Check for upper-case characters and transform if false
+    var index = 0;
+    // Check for upper-case characters
     if ( (/[A-Z]/.test( string )) === false ) {
       string = string.charAt( 0 ).toUpperCase() + string.slice ( 1 );
+      index = 1;
     }
-    // Check for lower-case characters and transform if false
+    // Check for lower-case characters
     if ( (/[a-z]/.test( string )) === false ) {
       string = string.charAt( 0 ).toLowerCase() + string.slice ( 1 );
+      index = 1;
     }
     // Check for numerical characters
     if ( (/[0-9]/.test( string )) === false ) {
       //string = addNumber( string );
     }
     // Check for special characters
-    if ( (/[!,$,%,&,_,-,=,@,#,?]/.test( string )) === false ) {
+    if ( (/[!,$,%,&,_,^,=,@,#,?]/.test( string )) === false ) {
       //  symbol IDs  0   1   2   3   4   5   6   7   8   9
-      var symbols = ['!','$','%','&','_','-','=','@','#','?'];
+      var symbols = ['!','$','%','&','_','^','=','@','#','?'];
       // Use hashes of the private key and string to provide symbol id & position
       var symId = CryptoJS.SHA512( priv ).toString().match(/\d/);
-      var position = parseInt( CryptoJS.SHA512( string ).toString().match(/\d/) );
+      var position = parseInt( CryptoJS.SHA512( string ).toString().match(/\d/) ) + index;
       var character = symbols[ symId ].toString();
       string = string.substr( 0, position ) + character + string.substr( position + 1 );
     }
     return string;
   },
 
-
+  // Wrapper function
   create : function ( pub, priv ) {
     var result = this.generate( pub, priv );
     result = this.harden( result, priv );
