@@ -22,21 +22,29 @@ var shallNotPass = {
   },
 
 
-  harden : function ( string ) {
+  harden : function ( string, priv ) {
     // Check for upper-case characters and transform if false
     if ( (/[A-Z]/.test( string )) === false ) {
       string = string.charAt( 0 ).toUpperCase() + string.slice ( 1 );
+    }
     // Check for lower-case characters and transform if false
-    } else if ( (/[a-z]/.test( string )) === false ) {
+    if ( (/[a-z]/.test( string )) === false ) {
       string = string.charAt( 0 ).toLowerCase() + string.slice ( 1 );
+    }
     // Check for numerical characters
-    } else if ( (/[0-9]/.test( string )) === false ) {
+    if ( (/[0-9]/.test( string )) === false ) {
       //string = addNumber( string );
         console.log( "Result modified to contain numberical characters" );
+    }
     // Check for special characters
-    } else if ( (/[!,$,%,^,&,*,_,-,+,=,:,;,@,#,.,/,?,`]/.test( string )) === false ) {
-      //string = addSpecialChar( string );
-       console.log( "Result modified to contain special characters" );
+    if ( (/[!,$,%,&,_,-,=,@,#,?]/.test( string )) === false ) {
+      //  symbol IDs  0   1   2   3   4   5   6   7   8   9
+      var symbols = ['!','$','%','&','_','-','=','@','#','?'];
+      // Use hashes of the private key and string to provide symbol id & position
+      var symId = CryptoJS.SHA512( priv ).toString().match(/\d/);
+      var position = parseInt( CryptoJS.SHA512( string ).toString().match(/\d/) );
+      var character = symbols[ symId ].toString();
+      string = string.substr( 0, position ) + character + string.substr( position + 1 );
     }
     return string;
   },
@@ -44,7 +52,7 @@ var shallNotPass = {
 
   create : function ( pub, priv ) {
     var result = this.generate( pub, priv );
-    result = this.harden( "qwerty" );
+    result = this.harden( result, priv );
       console.log( result );
     return result;
   }
